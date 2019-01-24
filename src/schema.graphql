@@ -1,0 +1,56 @@
+enum OrderSide {
+  BUY,
+  SELL
+}
+
+type Query {
+  orders: [Order!]!
+  wallets: [Wallet!]!
+  order(id: ID!): Order
+  currencies: [Currency!]!
+  currency(name: String!): Currency!
+  me: User
+}
+
+type Mutation {
+  placeOrder(quantity: Float!, currencyName: String!, side: OrderSide!): Order!
+  login(username: String!, password: String!): AuthPayload!
+}
+
+type Subscription {
+  tickerSubscription: Currency
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  username: String!
+  orders: [Order!]!
+  wallets: [Wallet!]!
+}
+
+type Order {
+  id: ID!
+  user: User!
+  price: Float!
+  side: OrderSide!
+  currency: Currency!
+  quantity: Float!
+}
+
+type Currency {
+  id: ID!
+  name: String!
+  lastPrice: Float!
+}
+
+type Wallet {
+  id: ID!
+  user: User!
+  quantity: Float!
+  currency: Currency!
+}

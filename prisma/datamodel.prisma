@@ -1,0 +1,38 @@
+enum OrderSide {
+  BUY,
+  SELL
+}
+
+type User {
+  id: ID! @id
+  username: String! @unique
+  password: String!
+  orders: [Order!]! @relation(link: INLINE)
+  wallets: [Wallet!]! @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Order {
+  id: ID! @id
+  user: User!
+  price: Float
+  side: OrderSide!
+  currency: Currency! @relation(link: INLINE)
+  quantity: Float!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Currency {
+  id: ID! @id
+  name: String! @unique
+  lastPrice: Float!
+}
+
+type Wallet {
+  id: ID! @id
+  user: User!
+  currency: Currency! @relation(link: INLINE)
+  quantity: Float!
+}

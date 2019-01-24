@@ -1,0 +1,65 @@
+mutation {
+  #  USD, Bitcoin, Litecoin, Dogecoin, and Monero
+  usd: createCurrency(data: { name: "USD", lastPrice: 0.00028 }) { id }
+  btc: createCurrency(data: { name: "BTC", lastPrice: 3571 }) { id }
+  ltc: createCurrency(data: { name: "LTC", lastPrice: 0.009 }) { id }
+  doge: createCurrency(data: { name: "DOGE", lastPrice: 0.00000057 }) { id }
+  xmr: createCurrency(data: { name: "XMR", lastPrice: 0.01258023 }) { id }
+
+  huey: createUser(data: {
+    username: "huey"
+    password: "$2a$10$zqLTWSG24EhUQr1meqMKwei9xLsM97Y7nt.FCG17CuksEu5yAWxGa"
+    wallets: {
+      create: [
+        { quantity: 10000, currency: { connect: { name: "USD" } } },
+        { quantity: 0, currency: { connect: { name: "BTC" } } },
+        { quantity: 0, currency: { connect: { name: "LTC" } } },
+        { quantity: 0, currency: { connect: { name: "DOGE" } } },
+        { quantity: 0, currency: { connect: { name: "XMR" } } },
+      ]
+    }
+    orders: {
+      create: []
+    }
+  }) {
+    id
+  }
+
+  dewey: createUser(data: {
+    username: "dewey"
+    password: "$2a$10$zqLTWSG24EhUQr1meqMKwei9xLsM97Y7nt.FCG17CuksEu5yAWxGa"
+    wallets: {
+      create: [
+        { quantity: 10000, currency: { connect: { name: "USD" } } },
+        { quantity: 0, currency: { connect: { name: "BTC" } } },
+        { quantity: 0, currency: { connect: { name: "LTC" } } },
+        { quantity: 0, currency: { connect: { name: "DOGE" } } },
+        { quantity: 0, currency: { connect: { name: "XMR" } } },
+      ]
+    }
+    orders: {
+      create: []
+    }
+  }) {
+    id
+  }
+
+  louie: createUser(data: {
+    username: "louie"
+    password: "$2a$10$zqLTWSG24EhUQr1meqMKwei9xLsM97Y7nt.FCG17CuksEu5yAWxGa"
+    wallets: {
+      create: [
+        { quantity: 10000, currency: { connect: { name: "USD" } } },
+        { quantity: 0, currency: { connect: { name: "BTC" } } },
+        { quantity: 0, currency: { connect: { name: "LTC" } } },
+        { quantity: 0, currency: { connect: { name: "DOGE" } } },
+        { quantity: 0, currency: { connect: { name: "XMR" } } },
+      ]
+    }
+    orders: {
+      create: []
+    }
+  }) {
+    id
+  }
+}
